@@ -10,7 +10,6 @@ class CustomFloat:
 
     def format(self, value):
         self.value = value
-        #print('Test value: %f' % value)  
         self.__process()
 
         ''' normal case and round '''
@@ -56,21 +55,11 @@ class CustomFloat:
                              .format(int(''.join(num_to_ceil[12:12+digits]),
                                          2) + 1))
         if len(fraction_part) < digits:
-            #print('LITTLE. Required: ' + digits)
             fraction_part = list('0' * digits - len(fraction_part).join(fraction_part))
-            #raise ValueError('Value: ', self.value)
         if len(fraction_part) > digits:
-            #print('BIG. Required: ' + str(digits))
-            #print('Before: ' + ''.join(fraction_part))
-            #raise ValueError('Value: ', self.value)
             fraction_part = fraction_part[len(fraction_part)-digits: len(fraction_part)]
-            #print('After: ' + ''.join(fraction_part), 'len:' , len(fraction_part))
-            
-            
-        #print('Fraction', len(''.join(fraction_part)))
         
         num_to_ceil[12:12 + digits] = fraction_part
-        #print('Converted: ', len(''.join(num_to_ceil)))
         return num_to_ceil
 
     def bin_to_float(self, b):
@@ -97,13 +86,3 @@ class CustomFloat:
         """ Convert float to 64-bit binary string. """
         [d] = struct.unpack(">Q", struct.pack(">d", value))
         return '{:064b}'.format(d)
-
-'''
-if __name__ == '__main__':
-    # Unit test.
-    test = CustomFloat(16)
-    #for f in 0.0, 1.0, -14.0, 12.546, math.pi:
-    #for f in 12.546, math.pi:
-    for f in -1.0000, 0.0000, 1.000000, -1.000000, 0.999999999805694:
-        print(test.format(f))
-'''

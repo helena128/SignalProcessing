@@ -18,7 +18,7 @@ class InputClass(object):
         return 'Integer(%s)' % self._val
 
 test = InputClass(5);
-print(test);
+print(test)
 
 test1 = InputClass(1025);
-print(test1);
+print(test1)

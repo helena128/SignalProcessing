@@ -10,10 +10,8 @@ class Generator:
     def __initializePoints(self):
         step = INTERVAL / self.numberOfPoints
         t = 0
-        #print('Y axis')
         while (t < INTERVAL):
             self.points[t] = self.__generate(t)
-            #print(t)
             t += step 
 
     def getPoints(self):
@@ -23,7 +21,3 @@ class Generator:
     @staticmethod  
     def __generate(t):
         return 0 if (t < 25 or t > 35) else 1
-
-#gen = Generator(20)
-#drawer = Drawer(gen.getPoints())
-#drawer.draw()

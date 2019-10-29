@@ -19,7 +19,6 @@ class DFT:
         self.inImag = [0] * self.N
         outReal = []
         outImag = []
-        #print("n = {}", n);
         for k in range(self.N):
             sumReal = 0.0
             sumImag = 0.0
@@ -56,7 +55,6 @@ class DFT:
         assert len(x) == len(y)
         print("Ideal\treal")
         for n in range(len(x)):
-            #print("{}\t{}".format(x[n], y[n]))
             print(y[n])
 
 i = 8
@@ -64,16 +62,13 @@ while (i < 40):
     arr = list(Generator(i).getPoints().values())
     dft = DFT(arr)
     res = dft.idft()
-    #dft.printResult(arr, res)
     deviation = []
     for i in range(len(res)):
         deviation.append(res[i] - arr[i])
     print(statistics.stdev(deviation))
     i += 2
 
-'''
 arr = list(Generator(50).getPoints().values())
 dft = DFT(arr)
 res = dft.idft()
 dft.printResult(arr, res)
-'''
